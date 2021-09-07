@@ -99,8 +99,8 @@ LDOPTIONS_sunos_gnu32=-shared
 WRAPPER_sunos_gnu32=32
 LIBNAME_sunos_gnu32=sunos_sparc
 
-FOPTIONS_SHARED_sunos_gnu64=-fno-second-underscore -w -m64
-FOPTIONS_NONSHARED_sunos_gnu64=-c -fno-second-underscore -w -m64
+FOPTIONS_SHARED_sunos_gnu64=-fno-second-underscore -w
+FOPTIONS_NONSHARED_sunos_gnu64=-c -fno-second-underscore -w
 FC_sunos_gnu64=g77
 PIC_sunos_gnu64=-fPIC
 LDOPTIONS_sunos_gnu64=-shared
@@ -123,8 +123,8 @@ LDOPTIONS_linux32_intel32=-shared
 WRAPPER_linux32_intel32=32
 LIBNAME_linux32_intel32=linux_x86
 
-FOPTIONS_SHARED_linux32_gnu32=-mno-align-double -fno-second-underscore -w -m32
-FOPTIONS_NONSHARED_linux32_gnu32=-c -mno-align-double -w -m32
+FOPTIONS_SHARED_linux32_gnu32=-fno-second-underscore -w -m32
+FOPTIONS_NONSHARED_linux32_gnu32=-c -w -m32
 FC_linux32_gnu32=gfortran
 PIC_linux32_gnu32=-fPIC
 LDOPTIONS_linux32_gnu32=-shared
@@ -173,16 +173,16 @@ LDOPTIONS_linux64_intel64_debug=-shared
 WRAPPER_linux64_intel64_debug=64
 LIBNAME_linux64_intel64_debug=linux_x86_64_debug
 
-FOPTIONS_SHARED_linux64_gnu32=-mno-align-double -fno-second-underscore -w -m32
-FOPTIONS_NONSHARED_linux64_gnu32=-c -mno-align-double -w -m32
+FOPTIONS_SHARED_linux64_gnu32=-fno-second-underscore -w -m32
+FOPTIONS_NONSHARED_linux64_gnu32=-c -w -m32
 FC_linux64_gnu32=gfortran
 PIC_linux64_gnu32=-fPIC
 LDOPTIONS_linux64_gnu32=-shared
 WRAPPER_linux64_gnu32=32
 LIBNAME_linux64_gnu32=linux_x86
 
-FOPTIONS_SHARED_linux64_gnu64=-mno-align-double -fno-second-underscore -w -m64 -O3
-FOPTIONS_NONSHARED_linux64_gnu64=-c -mno-align-double -w -m64 -O3
+FOPTIONS_SHARED_linux64_gnu64=-fno-second-underscore -w -O3
+FOPTIONS_NONSHARED_linux64_gnu64=-c -w -O3
 FC_linux64_gnu64=gfortran
 PIC_linux64_gnu64=-fPIC
 LDOPTIONS_linux64_gnu64=-shared
@@ -205,8 +205,8 @@ LDOPTIONS_linux64_pgfortran64=-shared
 WRAPPER_linux64_pgfortran64=64
 LIBNAME_linux64_pgfortran64=linux_x86_64
 
-FOPTIONS_SHARED_linux64_gfortran64=-mno-align-double -fno-second-underscore -w -m64
-FOPTIONS_NONSHARED_linux64_gfortran64=-c -mno-align-double -w -m64
+FOPTIONS_SHARED_linux64_gfortran64=-fno-second-underscore -w
+FOPTIONS_NONSHARED_linux64_gfortran64=-c -w
 FC_linux64_gfortran64=gfortran -std=legacy -ffixed-line-length-none
 PIC_linux64_gfortran64=-fPIC
 LDOPTIONS_linux64_gfortran64=-shared
@@ -222,7 +222,7 @@ NONSHAREDEXT_win32=a
 AROPTIONS_win32=-r
 
 #FOPTIONS_SHARED_win32_cygwin32=-mno-cygwin -I%IDLINC% -Wl,--add-stdcall-alias -fno-second-underscore -w
-#FOPTIONS_NONSHARED_win32_cygwin32=-c -mno-cygwin -shared -mno-align-double -fno-second-underscore -w
+#FOPTIONS_NONSHARED_win32_cygwin32=-c -mno-cygwin -shared -fno-second-underscore -w
 #FC_win32_cygwin32=g77
 #FC_win32_cygwin32=gfortran
 # gfortran doesn't accept -mno-cygwin
@@ -230,7 +230,7 @@ AROPTIONS_win32=-r
 # but that generates a DLL that matlab doesn't recognize
 # using g77 does work under cygwin, if you have g77 installed, and it builds a DLL Matlab likes.
 FOPTIONS_SHARED_win32_cygwin32=-I%IDLINC% -Wl,--add-stdcall-alias -fno-second-underscore -w
-FOPTIONS_NONSHARED_win32_cygwin32=-c -shared -mno-align-double -fno-second-underscore -w
+FOPTIONS_NONSHARED_win32_cygwin32=-c -shared -fno-second-underscore -w
 FC_win32_cygwin32=i686-264-mingw32-gfortran
 
 PIC_win32_cygwin32=
@@ -262,8 +262,8 @@ SHAREDEXT_win64=dll
 NONSHAREDEXT_win64=a
 AROPTIONS_win64=-r
 
-FOPTIONS_SHARED_win64_cygwin64=-std=legacy -ffixed-line-length-none -I%IDLINC% -Wl,--add-stdcall-alias -fno-second-underscore -w -m64
-FOPTIONS_NONSHARED_win64_cygwin64=-c -shared -mno-align-double -fno-second-underscore -w -m64
+FOPTIONS_SHARED_win64_cygwin64=-std=legacy -ffixed-line-length-none -I%IDLINC% -Wl,--add-stdcall-alias -fno-second-underscore -w
+FOPTIONS_NONSHARED_win64_cygwin64=-c -shared -fno-second-underscore -w
 FC_win64_cygwin64=x86_64-w64-mingw32-gfortran
 PIC_win64_cygwin64=
 LDOPTIONS_win64_cygwin64=-shared
@@ -278,17 +278,16 @@ SHAREDEXT_osx=dylib
 NONSHAREDEXT_osx=a
 AROPTIONS_osx=rc
 
-FOPTIONS_SHARED_osx_gnu32=-mno-align-double -ffixed-line-length-none -w -m32 -dynamiclib
-FOPTIONS_NONSHARED_osx_gnu32=-c -w -ffixed-line-length-none -mno-align-double -m32
+FOPTIONS_SHARED_osx_gnu32=-ffixed-line-length-none -w -m32 -dynamiclib
+FOPTIONS_NONSHARED_osx_gnu32=-c -w -ffixed-line-length-none -m32
 FC_osx_gnu32=gfortran
 PIC_osx_gnu32=
 LDOPTIONS_osx_gnu32=-dynamic
 WRAPPER_osx_gnu32=32
 LIBNAME_osx_gnu32=osx_x86
 
-FOPTIONS_SHARED_osx_gnu64=-mno-align-double -ffixed-line-length-none -w -m64 -dynamiclib
-FOPTIONS_NONSHARED_osx_gnu64=-c -w -ffixed-line-length-none -mno-align-double -m64
-FC_osx_gnu64=gfortran
+FOPTIONS_SHARED_osx_gnu64=-ffixed-line-length-none -w -dynamiclib
+FOPTIONS_NONSHARED_osx_gnu64=-c -w -ffixed-line-length-none FC_osx_gnu64=gfortran
 PIC_osx_gnu64=
 LDOPTIONS_osx_gnu64=-dynamic
 WRAPPER_osx_gnu64=64
